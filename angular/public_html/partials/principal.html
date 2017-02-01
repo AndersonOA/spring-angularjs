@@ -3,9 +3,13 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <form action="">
-            <input ng-model="filtro" ng-model-options="{debounce: 500}"
-                   class="form-control" placeholder="Filtrar" />
+        <form>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <a class="btn btn-success" href="./fotos/new">Nova Foto</a>
+                </div>
+                <input ng-model="filtro" ng-model-options="{debounce: 500}" class="form-control" placeholder="Filtrar" />
+            </div>
         </form>
     </div>
 </div>

@@ -6,8 +6,8 @@ angular.module('makersweb').controller('FotosController', function ($scope, $htt
             .then(function (retorno) {
                 $scope.fotos = retorno.data;
             }).catch(function (error) {
-        console.log(error);
-    });
+                console.log(error);
+            });
 });
 
 
