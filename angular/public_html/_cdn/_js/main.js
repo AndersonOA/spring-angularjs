@@ -10,6 +10,11 @@ angular.module('makersweb', ['minhaDiretivas', 'ngAnimate', 'ngRoute'])
                 controller: "FotoController"
             });
             
+            $routeProvider.when('/fotos/edit/:fotoId', {
+                templateUrl: 'partials/foto.html',
+                controller: "FotoController"
+            });
+            
             $routeProvider.otherwise({redirectTo: '/fotos'});
             
             // use the HTML5 History API
