@@ -1,0 +1,19 @@
+<div class="jumbotron">
+    <h1 class="text-center">Spring MVC + AngularJS</h1>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form action="">
+            <input ng-model="filtro" ng-model-options="{debounce: 500}"
+                   class="form-control" placeholder="Filtrar" />
+        </form>
+    </div>
+</div>
+<div class="row"></div>
+<div class="row m-top-10">
+    <meu-painel class="col-md-2 painel-animado"
+                ng-repeat="foto in fotos| filter : filtro" titulo="{{foto.titulo}}">
+        <img class="img-responsive center-block" src="{{foto.url}}"
+             alt="{{foto.titulo}}" /> </meu-painel>
+    <!-- /fim panel -->
+</div>
