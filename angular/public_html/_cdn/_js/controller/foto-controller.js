@@ -1,4 +1,4 @@
-angular.module('makersweb').controller('FotoController', function ($scope, $routeParams, recursoFoto) {
+angular.module('makersweb').controller('FotoController', function ($scope, $routeParams, recursoFoto, cadastroDeFotos) {
     $scope.foto = {};
     $scope.mensagem = '';
 
@@ -13,22 +13,14 @@ angular.module('makersweb').controller('FotoController', function ($scope, $rout
 
     $scope.submeter = function () {
         if ($scope.formulario.$valid) {
-            if ($routeParams.fotoId) {
-                recursoFoto.update({fotoId: $scope.foto.id}, $scope.foto, function () {
-                    $scope.mensagem = 'Foto ' + $scope.foto.titulo + ' atualizada com sucesso!';
-                }, function (error) {
-                    $scope.mensagem = 'Não foi possível atualizar a Foto ' + $scope.foto.titulo;
-                    console.log(error);
-                });
-            } else {
-                recursoFoto.save($scope.foto, function (response) {
-                    $scope.foto = {};
-                    $scope.mensagem = response.data.message;
-                }, function (error) {
-                    $scope.mensagem = 'Não foi possível incluir a Foto.';
-                    console.log(error);
-                });
-            }
+            cadastroDeFotos.cadastrar($scope.foto)
+                    .then(function (retorno) {
+                        $scope.mensagem = retorno.mensagem;
+                        if (retorno.inclusao) $scope.foto = {};
+                    })
+                    .catch(function (error) {
+                        $scope.mensagem = error.mensagem;
+                    });
         }
     };
 });
