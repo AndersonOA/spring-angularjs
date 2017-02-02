@@ -8,6 +8,7 @@ angular.module('makersweb').controller('FotoController', function ($scope, $http
         $http.get(URL_API + '/' + $routeParams.fotoId)
                 .then(function (response) {
                     $scope.foto = response.data;
+                    console.log($scope.foto.grupo);
                 })
                 .catch(function (error) {
                     $scope.mensagem = 'Não foi possível encontrar a Foto.';
@@ -17,7 +18,7 @@ angular.module('makersweb').controller('FotoController', function ($scope, $http
 
     $scope.submeter = function () {
         if ($scope.formulario.$valid) {
-            if ($scope.foto.id) {
+            if ($routeParams.fotoId) {
                 $http.put(URL_API + '/' + $scope.foto.id, $scope.foto)
                         .then(function () {
                             $scope.mensagem = 'Foto '+ $scope.foto.titulo +' atualizada com sucesso!';
