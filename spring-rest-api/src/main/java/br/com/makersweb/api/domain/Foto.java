@@ -7,6 +7,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -31,6 +33,10 @@ public class Foto extends DefaultDomain implements Serializable {
 
 	@Column(name = "url", nullable = false, length = 255)
 	private String url;
+
+	@ManyToOne
+	@JoinColumn(name = "grupo_id")
+	private Grupo grupo;
 
 	/**
 	 * @return the titulo
@@ -60,6 +66,21 @@ public class Foto extends DefaultDomain implements Serializable {
 	 */
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	/**
+	 * @return the grupo
+	 */
+	public Grupo getGrupo() {
+		return grupo;
+	}
+
+	/**
+	 * @param grupo
+	 *            the grupo to set
+	 */
+	public void setGrupo(Grupo grupo) {
+		this.grupo = grupo;
 	}
 
 }
