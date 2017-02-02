@@ -1,4 +1,4 @@
-angular.module('makersweb', ['minhaDiretivas', 'ngAnimate', 'ngRoute'])
+angular.module('makersweb', ['minhaDiretivas', 'meusServicos', 'ngAnimate', 'ngRoute'])
         .config(function ($routeProvider, $locationProvider) {
             $routeProvider.when('/fotos', {
                 templateUrl: 'partials/principal.html',
