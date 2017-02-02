@@ -34,6 +34,9 @@ public class Foto extends DefaultDomain implements Serializable {
 	@Column(name = "url", nullable = false, length = 255)
 	private String url;
 
+	@Column(name = "descricao", length = 255)
+	private String descricao;
+
 	@ManyToOne
 	@JoinColumn(name = "grupo_id")
 	private Grupo grupo;
@@ -66,6 +69,21 @@ public class Foto extends DefaultDomain implements Serializable {
 	 */
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	/**
+	 * @return the descricao
+	 */
+	public String getDescricao() {
+		return descricao;
+	}
+
+	/**
+	 * @param descricao
+	 *            the descricao to set
+	 */
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	/**
